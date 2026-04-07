@@ -11,8 +11,8 @@ created: '2025-02-24'
 modified: '2026-03-16'
 position: Consumer
 tags:
-  - Flowers
   - Florists
+  - Flowers
 url: >-
   https://raw.githubusercontent.com/api-evangelist/flower-shop-network/refs/heads/main/apis.yml
 specificationVersion: '0.19'
@@ -20,8 +20,8 @@ apis:
   - aid: flower-shop-network:flower-shop-network
     name: Flower Shop Network
     tags:
-      - Flowers
       - Florists
+      - Flowers
     humanURL: https://api.flowershopnetwork.com/
     properties:
       - url: https://api.flowershopnetwork.com/
