@@ -1,0 +1,109 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Flower Shop Network JSON API — Authentication
+  description: 'Flower Shop Network JSON API — Authentication. 2 operations. Lead operation: Issue API token. Self-contained
+    Naftiko capability covering one Flower Shop Network business surface.'
+  tags:
+  - Flower Shop Network
+  - Authentication
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FLOWER_SHOP_NETWORK_API_KEY: FLOWER_SHOP_NETWORK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: flower-shop-network-authentication
+    baseUri: https://api.flowershopnetwork.com/api
+    description: Flower Shop Network JSON API — Authentication business capability. Self-contained, no shared references.
+    resources:
+    - name: API-ForeignSystem.apiGetPosToken
+      path: /API/ForeignSystem.apiGetPosToken
+      operations:
+      - name: post
+        method: POST
+        description: Issue API token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: API-Token.apiCheck
+      path: /API/Token.apiCheck
+      operations:
+      - name: post
+        method: POST
+        description: Validate token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: flower-shop-network-authentication-rest
+    port: 8080
+    description: REST adapter for Flower Shop Network JSON API — Authentication. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/api/foreignsystem-apigetpostoken
+      name: api-foreignsystem-apigetpostoken
+      description: REST surface for API-ForeignSystem.apiGetPosToken.
+      operations:
+      - method: POST
+        name: post
+        description: Issue API token
+        call: flower-shop-network-authentication.post
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/token-apicheck
+      name: api-token-apicheck
+      description: REST surface for API-Token.apiCheck.
+      operations:
+      - method: POST
+        name: post
+        description: Validate token
+        call: flower-shop-network-authentication.post
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: flower-shop-network-authentication-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Flower Shop Network JSON API — Authentication. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: issue-api-token
+      description: Issue API token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: flower-shop-network-authentication.post
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-token
+      description: Validate token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: flower-shop-network-authentication.post
+      outputParameters:
+      - type: object
+        mapping: $.
