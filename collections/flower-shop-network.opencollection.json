@@ -1,0 +1,279 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flower Shop Network JSON API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue API token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/API/ForeignSystem.apiGetPosToken",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange FSN credentials for an API token used on subsequent calls."
+        },
+        {
+          "info": {
+            "name": "Validate token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/API/Token.apiCheck",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ]
+          },
+          "docs": "Validate token"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Load product data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/MyfsnProduct.apiLoadProductData",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Load product data"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Florists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search filling florists",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayUtil.apiSearchFlorists",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search filling florists"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve order details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayOrder.apiGetOrder",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve order details"
+        },
+        {
+          "info": {
+            "name": "Receive incoming orders awaiting accept/refuse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayOrder.apiReceiveOrders",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ]
+          },
+          "docs": "Receive incoming orders awaiting accept/refuse"
+        },
+        {
+          "info": {
+            "name": "Accept an incoming order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayOrder.apiAcceptOrder",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accept an incoming order"
+        },
+        {
+          "info": {
+            "name": "Refuse an incoming order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayOrder.apiRefuseOrder",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Refuse an incoming order"
+        },
+        {
+          "info": {
+            "name": "Send a florist-to-florist order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayOrder.apiSendOrder",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a florist-to-florist order"
+        },
+        {
+          "info": {
+            "name": "Confirm order delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayOrder.apiConfirmDelivery",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Confirm order delivery"
+        },
+        {
+          "info": {
+            "name": "Retrieve delivery confirmation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayOrder.apiGetDeliveryConfirmation",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve delivery confirmation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
