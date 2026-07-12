@@ -38,12 +38,16 @@ apis:
       - type: OpenAPI
         url: openapi/flower-shop-network-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/flower-shop-network-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/flower-shop-network
   - type: Website
     url: https://www.flowershopnetwork.com/
   - type: Documentation
     url: https://api.flowershopnetwork.com/
+  - url: https://www.flowershopnetwork.com/blog/feed/
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
