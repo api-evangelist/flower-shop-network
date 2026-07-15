@@ -38,6 +38,8 @@ apis:
       - type: OpenAPI
         url: openapi/flower-shop-network-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/flower-shop-network-agentic-access.yml
   - type: DomainSecurity
     url: security/flower-shop-network-domain-security.yml
   - type: LinkedIn
