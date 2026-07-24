@@ -1,0 +1,65 @@
+openapi: 3.0.3
+info:
+  title: Flower Shop Network JSON Authentication Products API
+  description: The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that allows florist point-of-sale systems and partners to authenticate, look up products and florists, and exchange wire orders across the FSN florist network. All endpoints accept and return JSON and require an API token.
+  version: 1.0.0
+  contact:
+    name: Flower Shop Network
+    url: https://api.flowershopnetwork.com/
+servers:
+- url: https://api.flowershopnetwork.com/api
+  description: Production
+- url: https://dev-api.flowershopnetwork.com/api
+  description: Development
+tags:
+- name: Products
+  description: Product catalog access
+paths:
+  /MyfsnProduct.apiLoadProductData:
+    post:
+      tags:
+      - Products
+      summary: Load product data
+      parameters:
+      - $ref: '#/components/parameters/Token'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - productId
+              properties:
+                productId:
+                  type: string
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+components:
+  parameters:
+    Token:
+      name: __token
+      in: query
+      required: true
+      description: FSN API authentication token
+      schema:
+        type: string
+  schemas:
+    Product:
+      type: object
+      properties:
+        productId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        currency:
+          type: string

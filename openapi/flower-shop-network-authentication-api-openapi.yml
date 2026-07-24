@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: Flower Shop Network JSON Authentication API
+  description: The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that allows florist point-of-sale systems and partners to authenticate, look up products and florists, and exchange wire orders across the FSN florist network. All endpoints accept and return JSON and require an API token.
+  version: 1.0.0
+  contact:
+    name: Flower Shop Network
+    url: https://api.flowershopnetwork.com/
+servers:
+- url: https://api.flowershopnetwork.com/api
+  description: Production
+- url: https://dev-api.flowershopnetwork.com/api
+  description: Development
+tags:
+- name: Authentication
+  description: Token issuance and validation
+paths:
+  /API/ForeignSystem.apiGetPosToken:
+    post:
+      tags:
+      - Authentication
+      summary: Issue API token
+      description: Exchange FSN credentials for an API token used on subsequent calls.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - username
+              - password
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Token issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  __token:
+                    type: string
+  /API/Token.apiCheck:
+    post:
+      tags:
+      - Authentication
+      summary: Validate token
+      parameters:
+      - $ref: '#/components/parameters/Token'
+      responses:
+        '200':
+          description: Token status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+components:
+  parameters:
+    Token:
+      name: __token
+      in: query
+      required: true
+      description: FSN API authentication token
+      schema:
+        type: string

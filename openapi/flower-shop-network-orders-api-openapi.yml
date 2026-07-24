@@ -1,146 +1,40 @@
 openapi: 3.0.3
 info:
-  title: Flower Shop Network JSON API
-  description: >-
-    The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that
-    allows florist point-of-sale systems and partners to authenticate, look up
-    products and florists, and exchange wire orders across the FSN florist
-    network. All endpoints accept and return JSON and require an API token.
-  version: "1.0.0"
+  title: Flower Shop Network JSON Authentication Orders API
+  description: The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that allows florist point-of-sale systems and partners to authenticate, look up products and florists, and exchange wire orders across the FSN florist network. All endpoints accept and return JSON and require an API token.
+  version: 1.0.0
   contact:
     name: Flower Shop Network
     url: https://api.flowershopnetwork.com/
 servers:
-  - url: https://api.flowershopnetwork.com/api
-    description: Production
-  - url: https://dev-api.flowershopnetwork.com/api
-    description: Development
+- url: https://api.flowershopnetwork.com/api
+  description: Production
+- url: https://dev-api.flowershopnetwork.com/api
+  description: Development
 tags:
-  - name: Authentication
-    description: Token issuance and validation
-  - name: Products
-    description: Product catalog access
-  - name: Florists
-    description: Florist directory lookup
-  - name: Orders
-    description: Wire order receipt, acceptance, sending, and delivery
+- name: Orders
+  description: Wire order receipt, acceptance, sending, and delivery
 paths:
-  /API/ForeignSystem.apiGetPosToken:
-    post:
-      tags: [Authentication]
-      summary: Issue API token
-      description: Exchange FSN credentials for an API token used on subsequent calls.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [username, password]
-              properties:
-                username:
-                  type: string
-                password:
-                  type: string
-      responses:
-        "200":
-          description: Token issued
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  __token:
-                    type: string
-  /API/Token.apiCheck:
-    post:
-      tags: [Authentication]
-      summary: Validate token
-      parameters:
-        - $ref: '#/components/parameters/Token'
-      responses:
-        "200":
-          description: Token status
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  valid:
-                    type: boolean
-  /MyfsnProduct.apiLoadProductData:
-    post:
-      tags: [Products]
-      summary: Load product data
-      parameters:
-        - $ref: '#/components/parameters/Token'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [productId]
-              properties:
-                productId:
-                  type: string
-      responses:
-        "200":
-          description: Product details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Product'
-  /RelayUtil.apiSearchFlorists:
-    post:
-      tags: [Florists]
-      summary: Search filling florists
-      parameters:
-        - $ref: '#/components/parameters/Token'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                city:
-                  type: string
-                state:
-                  type: string
-                postalCode:
-                  type: string
-                country:
-                  type: string
-                orderValue:
-                  type: number
-      responses:
-        "200":
-          description: Matching florists
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Florist'
   /RelayOrder.apiGetOrder:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       summary: Retrieve order details
       parameters:
-        - $ref: '#/components/parameters/Token'
+      - $ref: '#/components/parameters/Token'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [orderId]
+              required:
+              - orderId
               properties:
                 orderId:
                   type: string
       responses:
-        "200":
+        '200':
           description: Order details (includes tipping info)
           content:
             application/json:
@@ -148,12 +42,13 @@ paths:
                 $ref: '#/components/schemas/Order'
   /RelayOrder.apiReceiveOrders:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       summary: Receive incoming orders awaiting accept/refuse
       parameters:
-        - $ref: '#/components/parameters/Token'
+      - $ref: '#/components/parameters/Token'
       responses:
-        "200":
+        '200':
           description: Pending orders
           content:
             application/json:
@@ -163,50 +58,55 @@ paths:
                   $ref: '#/components/schemas/Order'
   /RelayOrder.apiAcceptOrder:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       summary: Accept an incoming order
       parameters:
-        - $ref: '#/components/parameters/Token'
+      - $ref: '#/components/parameters/Token'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [orderId]
+              required:
+              - orderId
               properties:
                 orderId:
                   type: string
       responses:
-        "200":
+        '200':
           description: Acceptance confirmation
   /RelayOrder.apiRefuseOrder:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       summary: Refuse an incoming order
       parameters:
-        - $ref: '#/components/parameters/Token'
+      - $ref: '#/components/parameters/Token'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [orderId]
+              required:
+              - orderId
               properties:
                 orderId:
                   type: string
                 reason:
                   type: string
       responses:
-        "200":
+        '200':
           description: Refusal confirmation
   /RelayOrder.apiSendOrder:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       summary: Send a florist-to-florist order
       parameters:
-        - $ref: '#/components/parameters/Token'
+      - $ref: '#/components/parameters/Token'
       requestBody:
         required: true
         content:
@@ -214,7 +114,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Order'
       responses:
-        "200":
+        '200':
           description: Send result
           content:
             application/json:
@@ -225,17 +125,19 @@ paths:
                     type: string
   /RelayOrder.apiConfirmDelivery:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       summary: Confirm order delivery
       parameters:
-        - $ref: '#/components/parameters/Token'
+      - $ref: '#/components/parameters/Token'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [orderId]
+              required:
+              - orderId
               properties:
                 orderId:
                   type: string
@@ -245,26 +147,28 @@ paths:
                 notes:
                   type: string
       responses:
-        "200":
+        '200':
           description: Delivery confirmed
   /RelayOrder.apiGetDeliveryConfirmation:
     post:
-      tags: [Orders]
+      tags:
+      - Orders
       summary: Retrieve delivery confirmation
       parameters:
-        - $ref: '#/components/parameters/Token'
+      - $ref: '#/components/parameters/Token'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [orderId]
+              required:
+              - orderId
               properties:
                 orderId:
                   type: string
       responses:
-        "200":
+        '200':
           description: Delivery confirmation record
           content:
             application/json:
@@ -290,34 +194,6 @@ components:
       schema:
         type: string
   schemas:
-    Product:
-      type: object
-      properties:
-        productId:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        price:
-          type: number
-        currency:
-          type: string
-    Florist:
-      type: object
-      properties:
-        floristId:
-          type: string
-        name:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
     Order:
       type: object
       properties:

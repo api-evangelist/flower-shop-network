@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: Flower Shop Network JSON Authentication Florists API
+  description: The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that allows florist point-of-sale systems and partners to authenticate, look up products and florists, and exchange wire orders across the FSN florist network. All endpoints accept and return JSON and require an API token.
+  version: 1.0.0
+  contact:
+    name: Flower Shop Network
+    url: https://api.flowershopnetwork.com/
+servers:
+- url: https://api.flowershopnetwork.com/api
+  description: Production
+- url: https://dev-api.flowershopnetwork.com/api
+  description: Development
+tags:
+- name: Florists
+  description: Florist directory lookup
+paths:
+  /RelayUtil.apiSearchFlorists:
+    post:
+      tags:
+      - Florists
+      summary: Search filling florists
+      parameters:
+      - $ref: '#/components/parameters/Token'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                city:
+                  type: string
+                state:
+                  type: string
+                postalCode:
+                  type: string
+                country:
+                  type: string
+                orderValue:
+                  type: number
+      responses:
+        '200':
+          description: Matching florists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Florist'
+components:
+  schemas:
+    Florist:
+      type: object
+      properties:
+        floristId:
+          type: string
+        name:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+  parameters:
+    Token:
+      name: __token
+      in: query
+      required: true
+      description: FSN API authentication token
+      schema:
+        type: string
