@@ -6,7 +6,19 @@ description: >-
   expose a JSON API for partner POS systems to authenticate, look up products and florists, and exchange wire orders
   across the FSN florist network.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/flower-shop-network.png
 access: 3rd-Party
 created: '2025-02-24'
 modified: '2026-05-19'
@@ -19,24 +31,54 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/flower-shop-network/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: flower-shop-network:flower-shop-network-json-api
-    name: Flower Shop Network JSON API
-    description: >-
-      The FSN JSON API is a REST-style HTTPS interface for florist POS systems and partners to authenticate, retrieve
-      product data, search filling florists, and send, receive, accept, refuse, and confirm wire orders.
-    humanURL: https://api.flowershopnetwork.com/
-    baseURL: https://api.flowershopnetwork.com/api/
-    tags:
-      - Florists
-      - Flowers
-      - Orders
-      - Wire Orders
-      - Point of Sale
-    properties:
-      - type: Documentation
-        url: https://api.flowershopnetwork.com/
-      - type: OpenAPI
-        url: openapi/flower-shop-network-openapi.yml
+- aid: flower-shop-network:flower-shop-network-authentication-api
+  name: Flower Shop Network Authentication API
+  description: Token issuance and validation
+  humanURL: https://api.flowershopnetwork.com/
+  baseURL: https://api.flowershopnetwork.com/api/
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/flower-shop-network-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://api.flowershopnetwork.com/
+- aid: flower-shop-network:flower-shop-network-florists-api
+  name: Flower Shop Network Florists API
+  description: Florist directory lookup
+  humanURL: https://api.flowershopnetwork.com/
+  baseURL: https://api.flowershopnetwork.com/api/
+  tags:
+  - Florists
+  properties:
+  - type: OpenAPI
+    url: openapi/flower-shop-network-florists-api-openapi.yml
+  - type: Documentation
+    url: https://api.flowershopnetwork.com/
+- aid: flower-shop-network:flower-shop-network-orders-api
+  name: Flower Shop Network Orders API
+  description: Wire order receipt, acceptance, sending, and delivery
+  humanURL: https://api.flowershopnetwork.com/
+  baseURL: https://api.flowershopnetwork.com/api/
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/flower-shop-network-orders-api-openapi.yml
+  - type: Documentation
+    url: https://api.flowershopnetwork.com/
+- aid: flower-shop-network:flower-shop-network-products-api
+  name: Flower Shop Network Products API
+  description: Product catalog access
+  humanURL: https://api.flowershopnetwork.com/
+  baseURL: https://api.flowershopnetwork.com/api/
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/flower-shop-network-products-api-openapi.yml
+  - type: Documentation
+    url: https://api.flowershopnetwork.com/
 common:
   - type: AgenticAccess
     url: agentic-access/flower-shop-network-agentic-access.yml
