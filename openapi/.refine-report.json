@@ -1,0 +1,20 @@
+{
+  "provider": "flower-shop-network",
+  "sources": [
+    "flower-shop-network-authentication-api-openapi.yml",
+    "flower-shop-network-florists-api-openapi.yml",
+    "flower-shop-network-orders-api-openapi.yml",
+    "flower-shop-network-products-api-openapi.yml"
+  ],
+  "outputs": [
+    "flower-shop-network-authentication-api-openapi.yml",
+    "flower-shop-network-florists-api-openapi.yml",
+    "flower-shop-network-orders-api-openapi.yml",
+    "flower-shop-network-products-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
