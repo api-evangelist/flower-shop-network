@@ -29,7 +29,7 @@ tags:
   - Wire Orders
   - Point of Sale
 url: https://raw.githubusercontent.com/api-evangelist/flower-shop-network/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: flower-shop-network:flower-shop-network-authentication-api
   name: Flower Shop Network Authentication API
