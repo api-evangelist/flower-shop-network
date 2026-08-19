@@ -1,0 +1,681 @@
+{
+  "item": [
+    {
+      "id": "629ac131-77ed-424e-b523-d02bc899e9b0",
+      "name": "Orders",
+      "description": {
+        "content": "Wire order receipt, acceptance, sending, and delivery",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "411c3413-ea3d-4c72-ad8c-917d871b114d",
+          "name": "Retrieve order details",
+          "request": {
+            "name": "Retrieve order details",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayOrder.apiGetOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef6472b3-0671-4b19-b5bb-510b927ea4c9",
+              "name": "Order details (includes tipping info)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayOrder.apiGetOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"recipient\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"items\": [\n    {\n      \"productId\": \"string\",\n      \"description\": \"string\",\n      \"price\": 1532.0797942050979\n    },\n    {\n      \"productId\": \"string\",\n      \"description\": \"string\",\n      \"price\": 3311.174771594497\n    }\n  ],\n  \"deliveryDate\": \"1985-07-09\",\n  \"tax\": {\n    \"gst\": 933.3671994448533,\n    \"hst\": 9383.50125112958,\n    \"pst\": 8437.84995305908,\n    \"qst\": 7829.489430591819\n  },\n  \"tip\": 8149.316637045193,\n  \"total\": 993.5985768069811\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "324e02d5-bb84-4c7a-a0d4-635ba146a8af",
+          "name": "Receive incoming orders awaiting accept/refuse",
+          "request": {
+            "name": "Receive incoming orders awaiting accept/refuse",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayOrder.apiReceiveOrders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6358e4e4-fcb9-44e6-85c9-d2451d60a1c2",
+              "name": "Pending orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayOrder.apiReceiveOrders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"orderId\": \"string\",\n    \"recipient\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"items\": [\n      {\n        \"productId\": \"string\",\n        \"description\": \"string\",\n        \"price\": 146.05075378615996\n      },\n      {\n        \"productId\": \"string\",\n        \"description\": \"string\",\n        \"price\": 2616.176774863118\n      }\n    ],\n    \"deliveryDate\": \"1983-05-18\",\n    \"tax\": {\n      \"gst\": 5895.08407836022,\n      \"hst\": 4578.829855197197,\n      \"pst\": 1487.7591946487812,\n      \"qst\": 9397.716794353104\n    },\n    \"tip\": 5853.713938643943,\n    \"total\": 1031.8845914056574\n  },\n  {\n    \"orderId\": \"string\",\n    \"recipient\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"items\": [\n      {\n        \"productId\": \"string\",\n        \"description\": \"string\",\n        \"price\": 6393.699067003512\n      },\n      {\n        \"productId\": \"string\",\n        \"description\": \"string\",\n        \"price\": 8834.424276076028\n      }\n    ],\n    \"deliveryDate\": \"2019-01-01\",\n    \"tax\": {\n      \"gst\": 1172.9001428481145,\n      \"hst\": 3279.5843937963,\n      \"pst\": 5693.652797209594,\n      \"qst\": 5930.75979517362\n    },\n    \"tip\": 9770.916344643656,\n    \"total\": 230.57228252272188\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1eb6bc5e-d50c-452a-bb57-fcdecac059a2",
+          "name": "Accept an incoming order",
+          "request": {
+            "name": "Accept an incoming order",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayOrder.apiAcceptOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf22a428-9c00-4f2a-8d75-ba7fe102e627",
+              "name": "Acceptance confirmation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayOrder.apiAcceptOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bd1ea88-ae2f-4db9-b5bf-bfe29e084f6e",
+          "name": "Refuse an incoming order",
+          "request": {
+            "name": "Refuse an incoming order",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayOrder.apiRefuseOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51113253-6cab-4a20-86c8-b274cf967daf",
+              "name": "Refusal confirmation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayOrder.apiRefuseOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfeb8138-083e-4eb4-9528-fa26cc9219a7",
+          "name": "Send a florist-to-florist order",
+          "request": {
+            "name": "Send a florist-to-florist order",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayOrder.apiSendOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"productId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<number>\"\n    },\n    {\n      \"productId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<number>\"\n    }\n  ],\n  \"deliveryDate\": \"<date>\",\n  \"tax\": {\n    \"gst\": \"<number>\",\n    \"hst\": \"<number>\",\n    \"pst\": \"<number>\",\n    \"qst\": \"<number>\"\n  },\n  \"tip\": \"<number>\",\n  \"total\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ab6555e3-1807-4d5c-a4a5-fb1d74cdca1d",
+              "name": "Send result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayOrder.apiSendOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"phone\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"productId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<number>\"\n    },\n    {\n      \"productId\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<number>\"\n    }\n  ],\n  \"deliveryDate\": \"<date>\",\n  \"tax\": {\n    \"gst\": \"<number>\",\n    \"hst\": \"<number>\",\n    \"pst\": \"<number>\",\n    \"qst\": \"<number>\"\n  },\n  \"tip\": \"<number>\",\n  \"total\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "840468f4-ad78-4652-b46c-df24bb6bc632",
+          "name": "Confirm order delivery",
+          "request": {
+            "name": "Confirm order delivery",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayOrder.apiConfirmDelivery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"deliveredAt\": \"<dateTime>\",\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c02b499f-a11b-4ad1-8bbe-8d32073794ca",
+              "name": "Delivery confirmed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayOrder.apiConfirmDelivery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"deliveredAt\": \"<dateTime>\",\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d9882ad-f9fc-4e5e-91bc-46bf4537ab09",
+          "name": "Retrieve delivery confirmation",
+          "request": {
+            "name": "Retrieve delivery confirmation",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayOrder.apiGetDeliveryConfirmation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6fb2c30a-a40e-496f-b9b4-7778c4e1fbd2",
+              "name": "Delivery confirmation record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayOrder.apiGetDeliveryConfirmation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orderId\": \"string\",\n  \"deliveredAt\": \"1973-08-14T16:20:13.249Z\",\n  \"signature\": \"string\",\n  \"notes\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.flowershopnetwork.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cdd10d9f-b27a-4195-901e-0f034e4d56f9",
+    "name": "Flower Shop Network JSON Authentication Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that allows florist point-of-sale systems and partners to authenticate, look up products and florists, and exchange wire orders across the FSN florist network. All endpoints accept and return JSON and require an API token.\n\nContact Support:\n Name: Flower Shop Network",
+      "type": "text/plain"
+    }
+  }
+}

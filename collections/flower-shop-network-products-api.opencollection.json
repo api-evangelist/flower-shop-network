@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flower Shop Network JSON Authentication Products API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Load product data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/MyfsnProduct.apiLoadProductData",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Load product data"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

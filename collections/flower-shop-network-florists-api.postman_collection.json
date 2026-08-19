@@ -1,0 +1,132 @@
+{
+  "item": [
+    {
+      "id": "8588c854-c1df-4b90-bd3f-510f6ea608db",
+      "name": "Florists",
+      "description": {
+        "content": "Florist directory lookup",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5443e02f-072f-43aa-a3c7-d99cb3df21f6",
+          "name": "Search filling florists",
+          "request": {
+            "name": "Search filling florists",
+            "description": {},
+            "url": {
+              "path": [
+                "RelayUtil.apiSearchFlorists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"orderValue\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f293a7a0-bf73-4aaf-a0ed-a87bbe31f814",
+              "name": "Matching florists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "RelayUtil.apiSearchFlorists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"orderValue\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"floristId\": \"string\",\n    \"name\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\"\n  },\n  {\n    \"floristId\": \"string\",\n    \"name\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.flowershopnetwork.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c0169517-f249-495e-9061-aa169a7881c1",
+    "name": "Flower Shop Network JSON Authentication Florists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that allows florist point-of-sale systems and partners to authenticate, look up products and florists, and exchange wire orders across the FSN florist network. All endpoints accept and return JSON and require an API token.\n\nContact Support:\n Name: Flower Shop Network",
+      "type": "text/plain"
+    }
+  }
+}

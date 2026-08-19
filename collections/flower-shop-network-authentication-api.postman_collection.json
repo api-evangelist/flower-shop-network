@@ -1,0 +1,206 @@
+{
+  "item": [
+    {
+      "id": "3a98360c-9219-4a8e-a511-cfec0c95d4f3",
+      "name": "Authentication",
+      "description": {
+        "content": "Token issuance and validation",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9ac03e6-6981-4dc1-82f5-e04c85448fd5",
+          "name": "Issue API token",
+          "request": {
+            "name": "Issue API token",
+            "description": {
+              "content": "Exchange FSN credentials for an API token used on subsequent calls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "API",
+                "ForeignSystem.apiGetPosToken"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97688d4b-408a-44c4-b764-42077cb80049",
+              "name": "Token issued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "API",
+                    "ForeignSystem.apiGetPosToken"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"__token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b39542e2-7bd4-4b0f-b86b-95c26c598297",
+          "name": "Validate token",
+          "request": {
+            "name": "Validate token",
+            "description": {},
+            "url": {
+              "path": [
+                "API",
+                "Token.apiCheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "__token",
+                  "value": "<string>",
+                  "description": "(Required) FSN API authentication token"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81f4132c-03d3-4510-a80e-2938e09446c5",
+              "name": "Token status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "API",
+                    "Token.apiCheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "__token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valid\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.flowershopnetwork.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "423749cb-1119-48b9-8e73-660592411a8f",
+    "name": "Flower Shop Network JSON Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Flower Shop Network (FSN) JSON API is a REST-style HTTPS interface that allows florist point-of-sale systems and partners to authenticate, look up products and florists, and exchange wire orders across the FSN florist network. All endpoints accept and return JSON and require an API token.\n\nContact Support:\n Name: Flower Shop Network",
+      "type": "text/plain"
+    }
+  }
+}

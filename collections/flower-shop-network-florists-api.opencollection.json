@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flower Shop Network JSON Authentication Florists API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Florists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search filling florists",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/RelayUtil.apiSearchFlorists",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search filling florists"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

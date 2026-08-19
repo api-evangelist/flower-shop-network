@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Flower Shop Network JSON Authentication API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Issue API token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/API/ForeignSystem.apiGetPosToken",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange FSN credentials for an API token used on subsequent calls."
+        },
+        {
+          "info": {
+            "name": "Validate token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.flowershopnetwork.com/api/API/Token.apiCheck",
+            "params": [
+              {
+                "name": "__token",
+                "value": "",
+                "type": "query",
+                "description": "FSN API authentication token"
+              }
+            ]
+          },
+          "docs": "Validate token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
