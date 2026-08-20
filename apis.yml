@@ -27,6 +27,11 @@ tags:
   - Florists
   - Flowers
   - Wire Orders
+  - Point-of-Sale
+tags_raw:
+  - Florists
+  - Flowers
+  - Wire Orders
   - Point of Sale
 url: https://raw.githubusercontent.com/api-evangelist/flower-shop-network/refs/heads/main/apis.yml
 specificationVersion: '0.23'
@@ -61,6 +66,8 @@ apis:
   humanURL: https://api.flowershopnetwork.com/
   baseURL: https://api.flowershopnetwork.com/api/
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -73,6 +80,8 @@ apis:
   humanURL: https://api.flowershopnetwork.com/
   baseURL: https://api.flowershopnetwork.com/api/
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
