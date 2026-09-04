@@ -33,7 +33,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/flower-sho
 access: 3rd-Party
 created: '2025-02-24'
 modified: '2026-05-19'
-position: Consumer
+position: Consuming
 tags:
   - Florists
   - Flowers
