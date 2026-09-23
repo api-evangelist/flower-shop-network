@@ -1,10 +1,7 @@
 {
   "provider": "flower-shop-network",
   "sources": [
-    "flower-shop-network-authentication-api-openapi.yml",
-    "flower-shop-network-florists-api-openapi.yml",
-    "flower-shop-network-orders-api-openapi.yml",
-    "flower-shop-network-products-api-openapi.yml"
+    "_original/flower-shop-network-openapi.yml"
   ],
   "outputs": [
     "flower-shop-network-authentication-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "flower-shop-network-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "flower-shop-network-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flower-shop-network-florists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flower-shop-network-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flower-shop-network-products-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
