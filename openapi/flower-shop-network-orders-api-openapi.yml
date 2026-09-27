@@ -199,14 +199,6 @@ paths:
       operationId: postRelayOrderApiGetDeliveryConfirmation
       x-operation-id-source: derived
 components:
-  parameters:
-    Token:
-      name: __token
-      in: query
-      required: true
-      description: FSN API authentication token
-      schema:
-        type: string
   schemas:
     Order:
       type: object
@@ -259,3 +251,11 @@ components:
           type: number
         total:
           type: number
+  parameters:
+    Token:
+      name: __token
+      in: query
+      required: true
+      description: FSN API authentication token
+      schema:
+        type: string

@@ -43,14 +43,6 @@ paths:
       operationId: postMyfsnProductApiLoadProductData
       x-operation-id-source: derived
 components:
-  parameters:
-    Token:
-      name: __token
-      in: query
-      required: true
-      description: FSN API authentication token
-      schema:
-        type: string
   schemas:
     Product:
       type: object
@@ -65,3 +57,11 @@ components:
           type: number
         currency:
           type: string
+  parameters:
+    Token:
+      name: __token
+      in: query
+      required: true
+      description: FSN API authentication token
+      schema:
+        type: string
