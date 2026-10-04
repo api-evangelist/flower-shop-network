@@ -1,0 +1,26 @@
+slug: flower-shop-network
+provider: Flower Shop Network
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Orders
+  spec_file: flower-shop-network-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.8
+  evidence: '"Receive incoming orders awaiting accept/refuse", "Send a florist-to-florist order", "Confirm
+    order delivery"'
+  reason: Operations cover the wire-order lifecycle between florists — receiving, accepting/refusing,
+    sending and confirming delivery — which is order promising, allocation and fulfilment orchestration
+    across the network.

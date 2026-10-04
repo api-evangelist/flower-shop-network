@@ -100,6 +100,9 @@ apis:
   - type: Documentation
     url: https://api.flowershopnetwork.com/
 common:
+  - type: CapabilityMap
+    url: capabilities/flower-shop-network-capability-edges.yml
+    name: Flower Shop Network Business Capability Map
   - type: AgenticAccess
     url: agentic-access/flower-shop-network-agentic-access.yml
   - type: DomainSecurity
