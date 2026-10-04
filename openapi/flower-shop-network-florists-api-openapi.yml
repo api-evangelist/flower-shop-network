@@ -51,14 +51,6 @@ paths:
       operationId: postRelayUtilApiSearchFlorists
       x-operation-id-source: derived
 components:
-  parameters:
-    Token:
-      name: __token
-      in: query
-      required: true
-      description: FSN API authentication token
-      schema:
-        type: string
   schemas:
     Florist:
       type: object
@@ -75,3 +67,11 @@ components:
           type: string
         country:
           type: string
+  parameters:
+    Token:
+      name: __token
+      in: query
+      required: true
+      description: FSN API authentication token
+      schema:
+        type: string
