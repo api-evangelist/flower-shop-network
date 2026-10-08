@@ -100,6 +100,12 @@ apis:
   - type: Documentation
     url: https://api.flowershopnetwork.com/
 common:
+  - type: Plans
+    url: plans/flower-shop-network-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/flower-shop-network-rate-limits.yml
+  - type: FinOps
+    url: finops/flower-shop-network-finops.yml
   - type: CapabilityMap
     url: capabilities/flower-shop-network-capability-edges.yml
     name: Flower Shop Network Business Capability Map
